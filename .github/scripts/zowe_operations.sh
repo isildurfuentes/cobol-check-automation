@@ -12,9 +12,8 @@ else
   echo "Directory already exists."
 fi
 # Upload files
-zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive --binary-files \
+zowe zos-files upload dir-to-uss "./cobol-check" "/z/$LOWERCASE_USERNAME/cobolcheck" --recursive --binary-files "cobol-check-0.2.19.jar" \
   --host $ZOWE_HOST --port $ZOWE_PORT --user $ZOWE_USERNAME --password $ZOWE_PASSWORD --reject-unauthorized false
-  "cobol-check-0.2.19.jar"
 # Verify upload
 echo "Verifying upload:"
 zowe zos-files list uss-files "/z/$LOWERCASE_USERNAME/cobolcheck" \
