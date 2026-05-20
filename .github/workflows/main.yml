@@ -17,7 +17,6 @@ jobs:
         run: npm install -g @zowe/cli
       - name: Verify Zowe
         run: |
-          wich zowe
           zowe --version
       - uses: actions/checkout@v2
       - name: Set up Java
