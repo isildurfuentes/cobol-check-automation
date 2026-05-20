@@ -18,6 +18,14 @@ jobs:
       - name: Verify Zowe
         run: |
           zowe --version
+      - name: Create Zowe Profile
+        run: |
+          zowe profiles create zomsf-profile mf \
+          --host ${{ secrets.ZOWE_HOST }} \
+          --port ${{ secrets.ZOWE_PORT }} \
+          --user ${{ secrets.ZOWE_USERNAME }} \
+          --password ${{ secrets.ZOWE_PASSWORD }} \
+          --reject-unauthorized false
       - uses: actions/checkout@v2
       - name: Set up Java
         uses: actions/setup-java@v2
@@ -28,6 +36,8 @@ jobs:
         env:
           ZOWE_USERNAME: ${{ secrets.ZOWE_USERNAME }}
           ZOWE_PASSWORD: ${{ secrets.ZOWE_PASSWORD }}
+          ZOWE_HOST: ${{ secrets.ZOWE_HOST }}
+          ZOWE_PORT: ${{ secrets.ZOWE_PORT }}
         run: |
           chmod +x .github/scripts/zowe_operations.sh
           .github/scripts/zowe_operations.sh
