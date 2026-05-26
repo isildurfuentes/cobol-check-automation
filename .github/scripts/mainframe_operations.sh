@@ -65,3 +65,4 @@ for program in EMPPAY; do
 done
 
 echo "Mainframe operations complete"
+echo "End"
